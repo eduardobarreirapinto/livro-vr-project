@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://c4u8jp4uqb70r"]
+
+[ext_resource type="Script" uid="uid://bo7vo0pg0l82v" path="res://scripts/livro_vr.gd" id="1"]
+[ext_resource type="Script" uid="uid://ul2ykolgn68d" path="res://scripts/interface_livro.gd" id="2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_yfktj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kjhen"]
+
+[node name="LivroVR" type="Node3D" unique_id=849020626]
+script = ExtResource("1")
+
+[node name="MeshLivro" type="MeshInstance3D" parent="." unique_id=1668744126]
+mesh = SubResource("QuadMesh_yfktj")
+
+[node name="AreaInteracao" type="Area3D" parent="." unique_id=631475802]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaInteracao" unique_id=1827705904]
+shape = SubResource("BoxShape3D_kjhen")
+
+[node name="SomPagina" type="AudioStreamPlayer3D" parent="." unique_id=1258200489]
+
+[node name="SubViewportControl" type="SubViewport" parent="." unique_id=1000255068]
+size = Vector2i(1024, 512)
+
+[node name="InterfaceLivro" type="Control" parent="SubViewportControl" unique_id=835240923]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("2")
+
+[node name="InterfaceLivro#TelaShader" type="TextureRect" parent="." unique_id=316156769]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -128.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="RayCastVR" type="RayCast3D" parent="." unique_id=237343514]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1270807273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.585841)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=677052013]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
